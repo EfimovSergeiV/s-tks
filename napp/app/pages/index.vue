@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-full content-center py-6">
 
     <div class="grid grid-cols-3 gap-4">
       <div class="bg-gray-800 border border-gray-700 rounded-lg p-4">
@@ -11,12 +11,7 @@
           <nuxt-link :to="{ name: 'signature' }" class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Генератор подписи для email</nuxt-link>      
         </div>      
       </div>
-
-
-
     </div>
-
-
 
   </div>
 </template>

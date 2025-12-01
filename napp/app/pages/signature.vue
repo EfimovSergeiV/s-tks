@@ -47,7 +47,7 @@
 
 
 <template>
-  <div class="h-full content-center">
+  <div class="h-full content-center py-6">
 
 
 
@@ -66,13 +66,13 @@
     <div class="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-4">
       <div class="">
 
-        <div class="flex items-center justify-start gap-6 py-2">
+        <div class="flex flex-wrap items-center justify-start gap-x-6 gap-y-2  py-2">
           <div class="">
             <div class="flex gap-4 items-center">
               <label for="country" class="block text-sm/6 font-medium text-gray-100">Выбрать шаблон</label>
               <div class="mt-2 grid grid-cols-1">
                 <select id="country" name="country" autocomplete="country-name" class="appearance-none rounded-md bg-gray-700 py-1.5 pr-8 pl-3 text-base text-gray-100 outline-1 -outline-offset-1 outline-white *:bg-gray-500 focus:outline-1 focus:-outline-offset-1 focus:outline-gray-500 sm:text-sm/6">
-                  <option>United States</option>
+                  <option>Базовый шаблон</option>
                   <option>Canada</option>
                   <option>Mexico</option>
                 </select>
@@ -84,7 +84,7 @@
               <label for="country" class="block text-sm/6 font-medium text-gray-100">Заполнить из списка</label>
               <div class="mt-2 grid grid-cols-1">
                 <select id="country" name="country" autocomplete="country-name" class="appearance-none rounded-md bg-gray-700 py-1.5 pr-8 pl-3 text-base text-gray-100 outline-1 -outline-offset-1 outline-white *:bg-gray-500 focus:outline-1 focus:-outline-offset-1 focus:outline-gray-500 sm:text-sm/6">
-                  <option>United States</option>
+                  <option>Не выбрано</option>
                   <option>Canada</option>
                   <option>Mexico</option>
                 </select>
@@ -131,8 +131,8 @@
 
               <div class="py-4 mt-4">
                 <div class="flex flex-wrap gap-4 items-center justify-center">
-                  <button @click="getSignatureCode()" class="rounded-sm bg-sky-500 px-10 py-2 text-base text-gray-50 font-semibold shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition duration-300 delay-150 hover:delay-300">Сгенерировать подпись</button>
-                  <button @click="copyToClipboard()" class="rounded-sm bg-sky-500 px-10 py-2 text-base text-gray-50 font-semibold shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition duration-300 delay-150 hover:delay-300">Скопировать в буфер обмена</button>      
+                  <button @click="getSignatureCode()" class="rounded-sm bg-sky-500 px-10 py-2 text-base text-gray-50 font-semibold shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition-all">Сгенерировать подпись</button>
+                  <button @click="copyToClipboard()" class="rounded-sm bg-sky-500 px-10 py-2 text-base text-gray-50 font-semibold shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition-all">Скопировать в буфер обмена</button>      
                 </div>          
               </div>
 
@@ -152,7 +152,7 @@
 
     </div>
 
-    <div class="flex flex-wrap items-center justify-end gap-6">
+    <div class="flex flex-wrap items-center justify-end gap-6 mt-4">
       <div class="">
         <div class="mt-1 mb-1 text-white">
           <p>Настройка подписи в браузере</p>
