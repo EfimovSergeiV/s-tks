@@ -1,49 +1,54 @@
 <script setup>
+  import { ref, watch } from 'vue'
+
   const config = useRuntimeConfig()
 
-
   const signatureCode = ref(null)
-  const userData = ref(
-    {
-      "name": null,
-      "family": null
-    }
-  )
+
+  const userData = ref({
+    name: null,
+    job: null,
+    work_phone: "+7 (8112) 72 52 13",
+    mobile: null,
+    email: null,
+    whatsapp: null,
+    telegramm: null,
+  })
 
   const getSignatureCode = async () => {
-    const res = await fetch(`${ config.public.baseURL }/srvc/signature/`)
-    signatureCode.value = await res.text()
-  }
+    const html = await $fetch(`${config.public.baseURL}/srvc/signature/`, {
+      method: 'POST',
+      body: { ...userData.value },
+    })
 
+    // $fetch возвращает строку HTML → записываем напрямую
+    signatureCode.value = html
+  }
 
   const copyToClipboard = async () => {
     try {
       const blob = new Blob([signatureCode.value], { type: "text/html" })
-
-      const item = new ClipboardItem({
-        "text/html": blob
-      })
+      const item = new ClipboardItem({ "text/html": blob })
 
       await navigator.clipboard.write([item])
-
-      alert("Подпись скопированна в бефер обмена, теперь её можно вставить в почтовый клиент")
+      alert("Подпись скопирована в буфер обмена")
     } catch (err) {
       console.error("Ошибка копирования:", err)
-      alert("Не удалось скопировать HTML")
     }
   }
 
   const previewFrame = ref(null)
+
   watch(signatureCode, (html) => {
-    if (previewFrame.value) {
+    if (previewFrame.value && typeof html === "string") {
       const doc = previewFrame.value.contentDocument
       doc.open()
       doc.write(html)
       doc.close()
     }
   })
-
 </script>
+
 
 
 <template>
@@ -53,7 +58,8 @@
 
     <div class="flex items-center justify-between gap-8 py-4">
       <div class="">
-
+        <!-- <p class="text-xs text-white">{{ userData }}</p> -->
+        <!-- <p class="text-xs text-white">{{ signatureCode }}</p> -->
       </div>
       <div class="">
         <div class="">
@@ -102,19 +108,19 @@
           <div>
               <div class="grid grid-cols-2 p-1">
                 <p class="text-gray-100">Имя Фамилия: </p>
-                <input placeholder="Иван Иванов" id="name" type="text"  class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
+                <input placeholder="Иван Иванов" id="name" type="text" v-model="userData.name" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
               </div>
               <div class="grid grid-cols-2 p-1">
                 <p class="text-gray-100">Должность: </p>
-                <input placeholder="Сотрудник" id="job" type="text" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
+                <input placeholder="Сотрудник" id="job" v-model="userData.job" type="text" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
               </div>
               <div class="grid grid-cols-2 p-1">
                 <p class="text-gray-100">Рабочий: </p>
-                <input placeholder="+7 (8112) 75 52 13" type="text" value="+7 (8112) 72 52 13" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
+                <input placeholder="+7 (8112) 75 52 13" v-model="userData.work_phone" type="text" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
               </div>
               <div class="grid grid-cols-2 p-1">
                 <p class="text-gray-100">Мобильный: </p>
-                <input placeholder="+7 (012) 345 67 89" id="private" type="text" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
+                <input placeholder="+7 (012) 345 67 89" v-model="userData.mobile" id="private" type="text" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
               </div>
 
               <div class="grid grid-cols-1 p-1 mt-6 text-right">
@@ -122,18 +128,18 @@
               </div>              
               <div class="grid grid-cols-2 p-1">
                 <p class="text-gray-100">WhatsApp: </p>
-                <input placeholder="+7 (012) 345 67 89" id="private" type="text" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
+                <input placeholder="+7 (012) 345 67 89" :v-model="userData.whatsapp" id="private" type="text" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
               </div>
               <div class="grid grid-cols-2 p-1">
                 <p class="text-gray-100">Телеграмм: </p>
-                <input placeholder="+7 (012) 345 67 89" id="private" type="text" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
+                <input placeholder="+7 (012) 345 67 89" :v-model="userData.telegramm" id="private" type="text" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
               </div>
 
               <div class="py-4 mt-4">
                 <div class="flex flex-wrap gap-4 items-center justify-center">
-                  <button @click="getSignatureCode()" class="rounded-sm bg-sky-500 px-10 py-2 text-base text-gray-50 font-semibold shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition-all">Сгенерировать подпись</button>
-                  <button @click="copyToClipboard()" class="rounded-sm bg-sky-500 px-10 py-2 text-base text-gray-50 font-semibold shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition-all">Скопировать в буфер обмена</button>      
-                </div>          
+                  <button @click="getSignatureCode()" class="rounded-sm bg-sky-500 px-4 py-2 text-base text-gray-50 font-semibold shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition-all">Сгенерировать подпись</button>
+                  <button @click="copyToClipboard()" class="rounded-sm bg-sky-500 px-4 py-2 text-base text-gray-50 font-semibold shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition-all">Скопировать в буфер обмена</button>      
+                </div>
               </div>
 
             </div>  

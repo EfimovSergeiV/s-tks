@@ -17,8 +17,8 @@ Including another URLconf
 
 
 from django.urls import path
-from .views import signature_generator
+from .views import *
 
 urlpatterns = [
-    path("signature/", signature_generator, name='signature_generator'),
+    path("signature/", SignatureGeneratorView.as_view(), name='signature_generator'),
 ]

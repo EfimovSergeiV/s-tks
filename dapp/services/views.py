@@ -1,68 +1,45 @@
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.http import HttpResponse
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializers import *
 
-'''
-def signature_generator(request):
+
+
+class SignatureGeneratorView(APIView):
     """ Генератор электронных подписей для сотрудников """
 
-    if request.method == 'POST':
-        form = NameForm(request.POST)
+    # queryset = ProductModel.objects.filter(activated=True)
+    serializer_class = SignatureSerializer
 
-        if form.is_valid():
-            data = form.cleaned_data
+    def get(self, request):
 
-            worker_link = data['worker'].replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11]
-            private_link = data['private'].replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11]
+        return HttpResponse("GET method is not allowed. Please use POST method to generate signature.")
+    
+    def post(self, request):
+        data = request.data
 
-            whatsapp = data['whatsapp'].replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11] if data['whatsapp'] != 'None' else private_link
-            telegramm = data['telegramm'].replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11] if data['telegramm'] != 'None' else private_link
+        worker_link = data['work_phone'].replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11]
+        mobile_link = data['mobile'].replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11]
 
-            context = {
-                    'name': data['name'],
-                    'job': data['job'],
-                    'worker': data['worker'],
-                    'private': data['private'],
-                    'worker_link': worker_link,
-                    'private_link': private_link,
-                    'whatsapp': whatsapp,
-                    'telegramm': telegramm,
-                }
+        whatsapp = data.get('whatsapp').replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11] if data.get('whatsapp') else worker_link
+        telegramm = data.get('telegramm').replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11] if data.get('telegramm') else mobile_link
 
-            signature = render_to_string('sb.html', context)
+        context = {
+            "name": data.get("name"),
+            "job": data.get("job"),
 
-            with open('files/signature.html', 'w') as static_file:
-                static_file.write(signature)
-
-            return render(request, 'sb.html', context)
-
-    else:
-        form = NameForm()
-
-
-    return render(request, 'sb-generator.html', {})
-
-'''
-
-
-
-def signature_generator(request):
-
-    context = {
-            'name': "data['name']",
-            'job': "data['job']",
-            'worker': "data['worker']",
-            'private': "data['private']",
-            'worker_link': "worker_link",
-            'private_link': "private_link",
-            'whatsapp': "whatsapp",
-            'telegramm': "telegramm",
+            "work_phone": data.get("work_phone"),
+            "worker_link": worker_link,
+            
+            "mobile": data.get("mobile"),
+            "mobile_link": mobile_link,
+            
+            "whatsapp": whatsapp,
+            "telegramm": telegramm,
         }
 
-    signature = render_to_string('email.html', context)
+        signature = render_to_string('email.html', context)
 
-    # with open('files/signature.html', 'w') as static_file:
-    #     static_file.write(signature)
-
-    # return render(request, 'email.html', context)
-    return HttpResponse(signature)
+        return HttpResponse(signature)

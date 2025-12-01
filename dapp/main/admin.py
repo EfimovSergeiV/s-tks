@@ -4,11 +4,11 @@ from .models import EmployeesModel
 
 
 class EmployeesAdmin(admin.ModelAdmin):
-    list_display = ("name", "family", "personal_phone", "work_phone", "email")
-    search_fields = ("name", "family", "email")
+    list_display = ("name", "mobile", "work_phone", "email")
+    search_fields = ("name", "email")
     fieldsets = (
         (None, {
-            "fields": (("name", "family"), ("personal_phone", "work_phone"), "email"),
+            "fields": (("name"), ("mobile", "work_phone"), ("whatsapp", "telegramm"), "email"),
         }),
     )
 
