@@ -151,7 +151,7 @@
           <p class="text-gray-50">Предварительный просмотр</p>
           <iframe
             ref="previewFrame"
-            class="w-full h-[400px] border border-gray-500 bg-white"
+            class="w-full h-[440px] border border-gray-500 bg-white"
           ></iframe>
         </div>        
       </div>
