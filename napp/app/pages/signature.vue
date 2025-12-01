@@ -145,12 +145,40 @@
           <p class="text-gray-50">Предварительный просмотр</p>
           <iframe
             ref="previewFrame"
-            class="w-full h-64 border"
+            class="w-full h-[400px] border border-gray-500 bg-white"
           ></iframe>
         </div>        
       </div>
 
     </div>
+
+    <div class="flex flex-wrap items-center justify-end gap-6">
+      <div class="">
+        <div class="mt-1 mb-1 text-white">
+          <p>Настройка подписи в браузере</p>
+        </div>
+        <div class="">
+          <video width="400" height="300" controls="controls" class="rounded-sm">
+            <source src="https://api.glsvar.ru/files/signature.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+            Тег video не поддерживается вашим браузером. 
+            <a href="video/duel.mp4">Скачайте видео</a>
+          </video>              
+        </div>
+      </div>
+      <div class="">
+        <div class="mt-1 mb-1 text-white">
+          <p>Настройка подписи в The Bat</p>
+        </div>
+        <div class="">
+          <video width="400" height="300" controls="controls" class="rounded-sm">
+            <source src="https://api.glsvar.ru/files/batmanual.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+            Тег video не поддерживается вашим браузером. 
+            <a href="video/duel.mp4">Скачайте видео</a>
+          </video>              
+        </div>
+      </div>
+    </div>
+
 
   </div>
 </template>
