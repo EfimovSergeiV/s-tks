@@ -47,74 +47,102 @@
 
 
 <template>
-  <div class="">
-    <p class="">Генератор подписи для email</p>
+  <div class="h-full content-center">
 
-    <div class="">
-      <nuxt-link :to="{ name: 'index' }">Вернуться</nuxt-link>
+
+
+    <div class="flex items-center justify-between gap-8 py-4">
+      <div class="">
+
+      </div>
+      <div class="">
+        <div class="">
+          <nuxt-link :to="{ name: 'index' }" class="text-gray-50">Вернуться на главную</nuxt-link>
+        </div>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-4">
+      <div class="">
 
-
-
-      <div class="grid grid-cols-1 gap-4">
-        <p class="text-red-500">{{ userData }}</p>
-
-        <div class="">
-          <div class="flex flex-wrap gap-4">
-            <div class="">
-              <label for="message" class="block mt-2 mb-1 text-xs font-medium text-gray-900 dark:text-gray-400">Имя</label>
-              <div class="relative">
-                <div class="flex absolute inset-y-0 left-0 items-center pl-2 pointer-events-none">
-                  <p class="mdi mdi-24px mdi-account"></p>
-                </div>
-                <input v-model="userData.name" type="text" id="person" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-300 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Иван">
-              </div>
-            </div>
-            <div class="">
-              <label for="message" class="block mt-2 mb-1 text-xs font-medium text-gray-900 dark:text-gray-400">Фамилия</label>
-              <div class="relative">
-                <div class="flex absolute inset-y-0 left-0 items-center pl-2 pointer-events-none">
-                  <p class="mdi mdi-24px mdi-account"></p>
-                </div>
-                <input v-model="userData.family" type="text" id="person" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-300 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Иванов">
+        <div class="flex items-center justify-start gap-6 py-2">
+          <div class="">
+            <div class="flex gap-4 items-center">
+              <label for="country" class="block text-sm/6 font-medium text-gray-100">Выбрать шаблон</label>
+              <div class="mt-2 grid grid-cols-1">
+                <select id="country" name="country" autocomplete="country-name" class="appearance-none rounded-md bg-gray-700 py-1.5 pr-8 pl-3 text-base text-gray-100 outline-1 -outline-offset-1 outline-white *:bg-gray-500 focus:outline-1 focus:-outline-offset-1 focus:outline-gray-500 sm:text-sm/6">
+                  <option>United States</option>
+                  <option>Canada</option>
+                  <option>Mexico</option>
+                </select>
               </div>
             </div>
           </div>
-          <div class="flex flex-wrap gap-4">
-            <div class="">
-              <label for="message" class="block mt-2 mb-1 text-xs font-medium text-gray-900 dark:text-gray-400">Имя</label>
-              <div class="relative">
-                <div class="flex absolute inset-y-0 left-0 items-center pl-2 pointer-events-none">
-                  <p class="mdi mdi-24px mdi-account"></p>
-                </div>
-                <input v-model="userData.name" type="text" id="person" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-300 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Иван">
-              </div>
-            </div>
-            <div class="">
-              <label for="message" class="block mt-2 mb-1 text-xs font-medium text-gray-900 dark:text-gray-400">Фамилия</label>
-              <div class="relative">
-                <div class="flex absolute inset-y-0 left-0 items-center pl-2 pointer-events-none">
-                  <p class="mdi mdi-24px mdi-account"></p>
-                </div>
-                <input v-model="userData.family" type="text" id="person" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-700 dark:placeholder-gray-400 dark:text-gray-300 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Иванов">
+          <div class="">
+            <div class="flex gap-4 items-center">
+              <label for="country" class="block text-sm/6 font-medium text-gray-100">Заполнить из списка</label>
+              <div class="mt-2 grid grid-cols-1">
+                <select id="country" name="country" autocomplete="country-name" class="appearance-none rounded-md bg-gray-700 py-1.5 pr-8 pl-3 text-base text-gray-100 outline-1 -outline-offset-1 outline-white *:bg-gray-500 focus:outline-1 focus:-outline-offset-1 focus:outline-gray-500 sm:text-sm/6">
+                  <option>United States</option>
+                  <option>Canada</option>
+                  <option>Mexico</option>
+                </select>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="flex flex-wrap gap-4">
-          <button @click="getSignatureCode()" class="bg-blue-500 px-4 py-2 text-gray-100 font-semibold rounded-sm">Сгенерировать подпись</button>
-          <button @click="copyToClipboard()" class="bg-blue-500 px-4 py-2 text-gray-100 font-semibold rounded-sm">Скопировать в буфер обмена</button>      
+        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4">
+
+          <div class="grid grid-cols-1 p-1 text-center py-4">
+            <p class="text-xl text-white">Генератор подписи для email</p>
+          </div>
+      
+          <div>
+              <div class="grid grid-cols-2 p-1">
+                <p class="text-gray-100">Имя Фамилия: </p>
+                <input placeholder="Иван Иванов" id="name" type="text"  class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
+              </div>
+              <div class="grid grid-cols-2 p-1">
+                <p class="text-gray-100">Должность: </p>
+                <input placeholder="Сотрудник" id="job" type="text" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
+              </div>
+              <div class="grid grid-cols-2 p-1">
+                <p class="text-gray-100">Рабочий: </p>
+                <input placeholder="+7 (8112) 75 52 13" type="text" value="+7 (8112) 72 52 13" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
+              </div>
+              <div class="grid grid-cols-2 p-1">
+                <p class="text-gray-100">Мобильный: </p>
+                <input placeholder="+7 (012) 345 67 89" id="private" type="text" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
+              </div>
+
+              <div class="grid grid-cols-1 p-1 mt-6 text-right">
+                <small class="text-gray-100">* Оставить пустыми, если совпадает с мобильным телефоном</small>
+              </div>              
+              <div class="grid grid-cols-2 p-1">
+                <p class="text-gray-100">WhatsApp: </p>
+                <input placeholder="+7 (012) 345 67 89" id="private" type="text" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
+              </div>
+              <div class="grid grid-cols-2 p-1">
+                <p class="text-gray-100">Телеграмм: </p>
+                <input placeholder="+7 (012) 345 67 89" id="private" type="text" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
+              </div>
+
+              <div class="py-4 mt-4">
+                <div class="flex flex-wrap gap-4 items-center justify-center">
+                  <button @click="getSignatureCode()" class="rounded-sm bg-sky-500 px-10 py-2 text-base text-gray-50 font-semibold shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition duration-300 delay-150 hover:delay-300">Сгенерировать подпись</button>
+                  <button @click="copyToClipboard()" class="rounded-sm bg-sky-500 px-10 py-2 text-base text-gray-50 font-semibold shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition duration-300 delay-150 hover:delay-300">Скопировать в буфер обмена</button>      
+                </div>          
+              </div>
+
+            </div>  
         </div>
-        
       </div>
 
       <div class="">
         <div class="grid grid-cols-1 gap-4">
-          <p class="">Предварительный просмотр</p>
+          <p class="text-gray-50">Предварительный просмотр</p>
           <iframe
             ref="previewFrame"
             class="w-full h-64 border"
