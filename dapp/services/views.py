@@ -22,12 +22,17 @@ class SignatureGeneratorView(APIView):
 
         print(data)
 
+        try:
+            worker_link = data.get('work_phone').replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11]
+            mobile_link = data.get('mobile').replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11]
+            whatsapp = data.get('whatsapp').replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11] if data.get('whatsapp') else worker_link
+            telegramm = data.get('telegramm').replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11] if data.get('telegramm') else mobile_link
+        except:
+            worker_link = ""
+            mobile_link = ""
+            whatsapp = ""
+            telegramm = ""
 
-        worker_link = data['work_phone'].replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11]
-        mobile_link = data['mobile'].replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11]
-
-        whatsapp = data.get('whatsapp').replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11] if data.get('whatsapp') else worker_link
-        telegramm = data.get('telegramm').replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11] if data.get('telegramm') else mobile_link
 
         context = {
             "name": data.get("name"),
@@ -41,16 +46,31 @@ class SignatureGeneratorView(APIView):
             
             "whatsapp": whatsapp,
             "telegramm": telegramm,
+
+            "banner_images": [],
+            "logo": None,
         }
 
 
         if data.get("template"):
             print(f"Selected template ID: {data.get('template')}")
+            template = SignatureGeneratorModel.objects.filter(id=data.get("template")["id"]).first()
+            signature = SignatureSerializer(template, context={"request": request}).data
+            print('\n\n\n\nQS: ',signature)
+            context["banner_images"] = signature.get("banner_images", [])
+            context["logo"] = signature.get("logo", None)
 
 
         if data.get("user"):
-            print(f"Selected user ID: {data.get('user')}")
-
+            employee = EmployeesModel.objects.filter(id=data.get("user")["id"]).first()
+            context["name"] = employee.name
+            context["job"] = employee.job
+            context["work_phone"] = employee.work_phone
+            context["mobile"] = employee.mobile
+            context["worker_link"] = employee.work_phone.replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11]
+            context["mobile_link"] = employee.mobile.replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11]
+            context["whatsapp"] = employee.whatsapp.replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11] if employee.whatsapp else context["worker_link"]
+            context["telegramm"] = employee.telegramm.replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11] if employee.telegramm else context["mobile_link"]
 
 
         signature = render_to_string('email.html', context)

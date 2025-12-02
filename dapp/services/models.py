@@ -6,7 +6,7 @@ class SignatureGeneratorModel(models.Model):
     """ EMAIL Signature Generator Model """
     
     name = models.CharField(max_length=255, verbose_name="Название шаблона")
-    logo = models.ImageField(upload_to='signatures/logos/', blank=True, null=True, verbose_name="Логотип справа", help_text="Разрешение лого = 185x162px")
+    logo = models.ImageField(upload_to='signatures/logos/', default="https://tehnosvar.ru/media/redactor/2022/08/29/tehoras-1.png", blank=True, null=True, verbose_name="Логотип справа", help_text="Разрешение лого = 185x162px")
 
     class Meta:
         verbose_name = "Шаблон подписи email"
