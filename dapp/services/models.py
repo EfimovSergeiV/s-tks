@@ -29,3 +29,19 @@ class BannerImageModel(models.Model):
 
     def __str__(self):
         return f"Banner Image {self.link}"
+    
+
+class CatalogModel(models.Model):
+    """ Ссылки на каталоги в подписи """
+    
+    signature = models.ForeignKey(SignatureGeneratorModel, on_delete=models.CASCADE, related_name="catalogs")
+    icon = models.ImageField(upload_to='signatures/catalogs/icons/', verbose_name="Иконка каталога", help_text="")
+    name = models.CharField(max_length=255, verbose_name="Название каталога")
+    link = models.URLField(max_length=500, verbose_name="Ссылка на каталог")
+
+    class Meta:
+        verbose_name = "Ссылку на каталог"
+        verbose_name_plural = "Ссылки на каталоги"
+
+    def __str__(self):
+        return self.name
