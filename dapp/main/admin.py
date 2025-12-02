@@ -8,7 +8,7 @@ class EmployeesAdmin(admin.ModelAdmin):
     search_fields = ("name", "email")
     fieldsets = (
         (None, {
-            "fields": (("name"), ("mobile", "work_phone"), ("whatsapp", "telegramm"), "email"),
+            "fields": (("name", "job"), ("mobile", "work_phone"), ("whatsapp", "telegramm"), "email"),
         }),
     )
 

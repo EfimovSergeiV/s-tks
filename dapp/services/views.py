@@ -61,18 +61,6 @@ class SignatureGeneratorView(APIView):
             context["logo"] = signature.get("logo", None)
 
 
-        if data.get("user"):
-            employee = EmployeesModel.objects.filter(id=data.get("user")["id"]).first()
-            context["name"] = employee.name
-            context["job"] = employee.job
-            context["work_phone"] = employee.work_phone
-            context["mobile"] = employee.mobile
-            context["worker_link"] = employee.work_phone.replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11]
-            context["mobile_link"] = employee.mobile.replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11]
-            context["whatsapp"] = employee.whatsapp.replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11] if employee.whatsapp else context["worker_link"]
-            context["telegramm"] = employee.telegramm.replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11] if employee.telegramm else context["mobile_link"]
-
-
         signature = render_to_string('email.html', context)
 
         return HttpResponse(signature)

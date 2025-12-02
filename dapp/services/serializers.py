@@ -6,7 +6,7 @@ from main.models import *
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = EmployeesModel
-        fields = ['id', 'name']
+        fields = "__all__"
 
 
 class BannerImageSerializer(serializers.ModelSerializer):
