@@ -6,6 +6,10 @@
   const { data: context } = await useFetch(`${ config.public.baseURL }/srvc/signature/`)
 
   const signatureCode = ref(null)
+  const signatureVariant = ref({
+    "user": null,
+    "template": null
+  })
 
   const userData = ref({
     name: null,
@@ -20,7 +24,7 @@
   const getSignatureCode = async () => {
     const html = await $fetch(`${config.public.baseURL}/srvc/signature/`, {
       method: 'POST',
-      body: { ...userData.value },
+      body: { ...userData.value, ...signatureVariant.value },
     })
 
     // $fetch возвращает строку HTML → записываем напрямую
@@ -62,7 +66,8 @@
       <div class="">
         <!-- <p class="text-xs text-white">{{ userData }}</p> -->
         <!-- <p class="text-xs text-white">{{ signatureCode }}</p> -->
-        <!-- <p class="text-xs text-white">{{ context }}</p> -->
+        <p class="text-xs text-white">{{ context }}</p>
+        <p class="text-xs text-white mt-2">{{ signatureVariant }}</p>
       </div>
       <div class="">
         <div class="">
@@ -80,8 +85,8 @@
             <div class="flex gap-4 items-center">
               <label for="country" class="block text-sm/6 font-medium text-gray-100">Выбрать шаблон</label>
               <div class="mt-2 grid grid-cols-1">
-                <select id="country" name="country" autocomplete="country-name" class="appearance-none rounded-md bg-gray-700 py-1.5 pr-8 pl-3 text-base text-gray-100 outline-1 -outline-offset-1 outline-white *:bg-gray-500 focus:outline-1 focus:-outline-offset-1 focus:outline-gray-500 sm:text-sm/6">
-                  <option v-for="templ in context.templates" :key="templ.id">{{ templ.name }}</option>
+                <select id="country" name="template" v-model="signatureVariant.template" autocomplete="country-name" class="appearance-none rounded-md bg-gray-700 py-1.5 pr-8 pl-3 text-base text-gray-100 outline-1 -outline-offset-1 outline-white *:bg-gray-500 focus:outline-1 focus:-outline-offset-1 focus:outline-gray-500 sm:text-sm/6">
+                  <option v-for="templ in context.templates" :value="templ" :key="templ.id">{{ templ.name }}</option>
                 </select>
               </div>
             </div>
@@ -90,8 +95,8 @@
             <div class="flex gap-4 items-center">
               <label for="country" class="block text-sm/6 font-medium text-gray-100">Заполнить из списка</label>
               <div class="mt-2 grid grid-cols-1">
-                <select id="country" name="country" autocomplete="country-name" class="appearance-none rounded-md bg-gray-700 py-1.5 pr-8 pl-3 text-base text-gray-100 outline-1 -outline-offset-1 outline-white *:bg-gray-500 focus:outline-1 focus:-outline-offset-1 focus:outline-gray-500 sm:text-sm/6">
-                  <option v-for="user in context.users" :key="user.id">{{ user.name }}</option>
+                <select id="country" name="user" v-model="signatureVariant.user" autocomplete="country-name1" class="appearance-none rounded-md bg-gray-700 py-1.5 pr-8 pl-3 text-base text-gray-100 outline-1 -outline-offset-1 outline-white *:bg-gray-500 focus:outline-1 focus:-outline-offset-1 focus:outline-gray-500 sm:text-sm/6">
+                  <option v-for="user in context.users" :value="user" :key="user.id">{{ user.name }}</option>
                 </select>
               </div>
             </div>
