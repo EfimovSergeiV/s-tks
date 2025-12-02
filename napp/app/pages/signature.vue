@@ -68,8 +68,8 @@
       <div class="">
         <!-- <p class="text-xs text-white">{{ userData }}</p> -->
         <!-- <p class="text-xs text-white">{{ signatureCode }}</p> -->
-        <p class="text-xs text-white">{{ context }}</p>
-        <p class="text-xs text-white mt-2">{{ signatureVariant }}</p>
+        <!-- <p class="text-xs text-white">{{ context }}</p> -->
+        <!-- <p class="text-xs text-white mt-2">{{ signatureVariant }}</p> -->
       </div>
       <div class="">
         <div class="">
