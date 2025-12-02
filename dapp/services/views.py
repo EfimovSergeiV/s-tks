@@ -10,12 +10,23 @@ from .serializers import *
 class SignatureGeneratorView(APIView):
     """ Генератор электронных подписей для сотрудников """
 
-    # queryset = ProductModel.objects.filter(activated=True)
-    serializer_class = SignatureSerializer
-
     def get(self, request):
 
-        return HttpResponse("GET method is not allowed. Please use POST method to generate signature.")
+        users = [
+            {"id": 1, "name" : "Cергей Иванов"},
+            {"id": 2, "name" : "Сергей Ефимов"},
+            {"id": 3, "name" : "Алабай Лохматый"},
+            {"id": 4, "name" : "Вася Никитин"},
+        ]
+
+        templates = [
+            {"id": 1, "name" : "Базовый шаблон 1"},
+            {"id": 2, "name" : "Базовый шаблон 2"},
+            {"id": 3, "name" : "Базовый шаблон 3"},
+            {"id": 4, "name" : "Базовый шаблон 4"},
+        ]
+
+        return Response({ "users": users, "templates": templates })
     
     def post(self, request):
         data = request.data

@@ -3,6 +3,8 @@
 
   const config = useRuntimeConfig()
 
+  const { data: context } = await useFetch(`${ config.public.baseURL }/srvc/signature/`)
+
   const signatureCode = ref(null)
 
   const userData = ref({
@@ -60,6 +62,7 @@
       <div class="">
         <!-- <p class="text-xs text-white">{{ userData }}</p> -->
         <!-- <p class="text-xs text-white">{{ signatureCode }}</p> -->
+        <p class="text-xs text-white">{{ context }}</p>
       </div>
       <div class="">
         <div class="">
@@ -78,9 +81,7 @@
               <label for="country" class="block text-sm/6 font-medium text-gray-100">Выбрать шаблон</label>
               <div class="mt-2 grid grid-cols-1">
                 <select id="country" name="country" autocomplete="country-name" class="appearance-none rounded-md bg-gray-700 py-1.5 pr-8 pl-3 text-base text-gray-100 outline-1 -outline-offset-1 outline-white *:bg-gray-500 focus:outline-1 focus:-outline-offset-1 focus:outline-gray-500 sm:text-sm/6">
-                  <option>Базовый шаблон</option>
-                  <option>Canada</option>
-                  <option>Mexico</option>
+                  <option v-for="templ in context.templates" :key="templ.id">{{ templ.name }}</option>
                 </select>
               </div>
             </div>
@@ -90,9 +91,7 @@
               <label for="country" class="block text-sm/6 font-medium text-gray-100">Заполнить из списка</label>
               <div class="mt-2 grid grid-cols-1">
                 <select id="country" name="country" autocomplete="country-name" class="appearance-none rounded-md bg-gray-700 py-1.5 pr-8 pl-3 text-base text-gray-100 outline-1 -outline-offset-1 outline-white *:bg-gray-500 focus:outline-1 focus:-outline-offset-1 focus:outline-gray-500 sm:text-sm/6">
-                  <option>Не выбрано</option>
-                  <option>Canada</option>
-                  <option>Mexico</option>
+                  <option v-for="user in context.users" :key="user.id">{{ user.name }}</option>
                 </select>
               </div>
             </div>
