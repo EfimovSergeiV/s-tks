@@ -56,8 +56,9 @@ class SignatureGeneratorView(APIView):
             print(f"Selected template ID: {data.get('template')}")
             template = SignatureGeneratorModel.objects.filter(id=data.get("template")["id"]).first()
             signature = SignatureSerializer(template, context={"request": request}).data
-            print('\n\n\n\nQS: ',signature)
+
             context["banner_images"] = signature.get("banner_images", [])
+            context["catalogs"] = signature.get("catalogs", [])
             context["logo"] = signature.get("logo", None)
 
 

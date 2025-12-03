@@ -35,7 +35,7 @@ class CatalogModel(models.Model):
     """ Ссылки на каталоги в подписи """
     
     signature = models.ForeignKey(SignatureGeneratorModel, on_delete=models.CASCADE, related_name="catalogs")
-    icon = models.ImageField(upload_to='signatures/catalogs/icons/', verbose_name="Иконка каталога", help_text="")
+    icon = models.ImageField(upload_to='signatures/catalogs/icons/', verbose_name="Иконка каталога", help_text="Рекомендую 16x16 (px)")
     name = models.CharField(max_length=255, verbose_name="Название каталога")
     link = models.URLField(max_length=500, verbose_name="Ссылка на каталог")
 
