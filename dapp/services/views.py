@@ -20,8 +20,6 @@ class SignatureGeneratorView(APIView):
     def post(self, request):
         data = request.data
 
-        print(data)
-
         try:
             worker_link = data.get('work_phone').replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11]
             mobile_link = data.get('mobile').replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11]

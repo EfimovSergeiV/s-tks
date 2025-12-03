@@ -29,7 +29,7 @@ class BannerImageModel(models.Model):
 
     def __str__(self):
         return f"Banner Image {self.link}"
-    
+
 
 class CatalogModel(models.Model):
     """ Ссылки на каталоги в подписи """
