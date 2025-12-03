@@ -143,11 +143,23 @@ a[x-apple-data-detectors] {
         </tr>
       </table>
     </div>
+
     {% for banner in banner_images %}
       <a href="{{ banner.link }}" target="_blank">
         <img style="width: 620px;" src="{{ banner.image }}" />
       </a>
       <br />
     {% endfor %}
+
+    <br />
+
+    {% for catalog in catalogs %}
+    <div style="margin-left: 10px; margin-top: 20px;">
+      <a href="{{ catalog.link }}" target="_blank" style="color: #001851; text-decoration: none; display: flex; align-items: center; margin: 8px;" title="Открыть в новом окне">
+        <p style="color: #001851; font-size: 14px; margin: 0px;"><img src="{{ catalog.icon }}" style="width: 16px; height: 16px; margin-right: 8px;" />{{ catalog.name }}</p>
+      </a>
+    </div>
+    {% endfor %}
+
   </body>
 </html>

@@ -8,7 +8,7 @@ class BannerImageInline(admin.TabularInline):
     extra = 0
 
 
-class CatalogInline(admin.TabularInline):
+class CatalogsInline(admin.TabularInline):
     model = CatalogModel
     extra = 0
 
@@ -16,7 +16,7 @@ class CatalogInline(admin.TabularInline):
 class SignatureGeneratorAdmin(admin.ModelAdmin):
     list_display = ("name",)
     search_fields = ("name",)
-    inlines = [BannerImageInline, CatalogInline]
+    inlines = [BannerImageInline, CatalogsInline]
     fieldsets = (
         (None, {
             "fields": ("name", "logo",),
@@ -24,5 +24,5 @@ class SignatureGeneratorAdmin(admin.ModelAdmin):
     )
 
 
-# admin.site.register(BannerImageModel)
+
 admin.site.register(SignatureGeneratorModel, SignatureGeneratorAdmin)
