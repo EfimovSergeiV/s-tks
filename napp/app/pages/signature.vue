@@ -134,11 +134,11 @@
               </div>              
               <div class="grid grid-cols-2 p-1">
                 <p class="text-gray-100">WhatsApp: </p>
-                <input placeholder="+7 (012) 345 67 89" :v-model="userData.whatsapp" id="private" type="text" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
+                <input placeholder="+7 (012) 345 67 89" :v-model="userData.whatsapp" id="WhatsApp" type="text" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
               </div>
               <div class="grid grid-cols-2 p-1">
                 <p class="text-gray-100">Телеграмм: </p>
-                <input placeholder="+7 (012) 345 67 89" :v-model="userData.telegramm" id="private" type="text" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
+                <input placeholder="+7 (012) 345 67 89" :v-model="userData.telegramm" id="telegramm" type="text" class="text-gray-800 p-1 pr-4 pl-4 rounded-sm text-center">
               </div>
 
               <div class="py-4 mt-4">
