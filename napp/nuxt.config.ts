@@ -16,7 +16,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      baseURL: cfg.BASE_URL, ///"http://127.0.0.1:8000",
+      baseURL: cfg.BASE_URL,
     },
   },
 
