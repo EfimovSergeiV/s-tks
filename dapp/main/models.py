@@ -6,8 +6,8 @@ class EmployeesModel(models.Model):
 
     name = models.CharField(max_length=100, verbose_name="Имя Фамилия")
     job = models.CharField(max_length=100, verbose_name="Должность")    
-    work_phone = models.CharField(max_length=20, null=True, blank=True, verbose_name="Рабочий телефон")
-    mobile = models.CharField(max_length=20, verbose_name="Личный телефон")
+    work_phone = models.CharField(max_length=40, null=True, blank=True, verbose_name="Рабочий телефон")
+    mobile = models.CharField(max_length=40, verbose_name="Личный телефон")
     email = models.EmailField(null=True, blank=True, verbose_name="Электронная почта")
     whatsapp = models.CharField(max_length=20, null=True, blank=True, verbose_name="WhatsApp")
     telegramm = models.CharField(max_length=20, null=True, blank=True, verbose_name="Telegram")
