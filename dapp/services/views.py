@@ -20,10 +20,12 @@ class SignatureGeneratorView(APIView):
     def post(self, request):
         data = request.data
 
+        print(data)
+
         try:
             worker_link = data.get('work_phone').replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11]
             mobile_link = data.get('mobile').replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11]
-            whatsapp = data.get('whatsapp').replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11] if data.get('whatsapp') else worker_link
+            whatsapp = data.get('whatsapp').replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11] if data.get('whatsapp') else mobile_link
             telegramm = data.get('telegramm').replace("+", "").replace(" ", "").replace("(", "").replace(")", "").replace("-", "")[0: 11] if data.get('telegramm') else mobile_link
         except:
             worker_link = ""
@@ -49,16 +51,16 @@ class SignatureGeneratorView(APIView):
             "logo": None,
         }
 
+        # print(f"context : { context }")
+
 
         if data.get("template"):
-            print(f"Selected template ID: {data.get('template')}")
             template = SignatureGeneratorModel.objects.filter(id=data.get("template")["id"]).first()
             signature = SignatureSerializer(template, context={"request": request}).data
 
             context["banner_images"] = signature.get("banner_images", [])
             context["catalogs"] = signature.get("catalogs", [])
             context["logo"] = signature.get("logo", None)
-
 
         signature = render_to_string('email.html', context)
 
