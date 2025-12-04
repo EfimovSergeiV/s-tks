@@ -20,8 +20,10 @@ from django.urls import path, include
 from main import settings
 from django.conf.urls.static import static
 
+from .views import *
 
 urlpatterns = [
+    path("", MainPageView.as_view()),
     path("admin/", admin.site.urls),
     path('srvc/', include('services.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

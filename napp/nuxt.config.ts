@@ -1,3 +1,5 @@
+import cfg from "./conf"
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -14,7 +16,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      baseURL: "http://127.0.0.1:8000",
+      baseURL: cfg.BASE_URL, ///"http://127.0.0.1:8000",
     },
   },
 
