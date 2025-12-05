@@ -4,7 +4,7 @@ import cfg from "./conf"
 export default defineNuxtConfig({
   compatibilityDate: '2025-12-05',
   devtools: { enabled: true },
-  
+  ssr: false, /// true
   app: {
     head: {
       title: 'Внутренние сервисы Техносвар КС',
