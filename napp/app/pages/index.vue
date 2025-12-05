@@ -19,7 +19,7 @@
       <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 h-full">
         <p class="text-white uppercase font-semibold pb-1 border-b">Внутренние сервисы</p>
         <div class="grid grid-cols-1 gap-2 py-4">
-          <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Корпоративный мессенеджер</nuxt-link>
+          <nuxt-link :to="{ name: 'messenger' }" class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Корпоративный мессенеджер</nuxt-link>
           <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Корпоративная почта</nuxt-link>
           <nuxt-link :to="{ name: 'signature' }" class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Генератор подписи для email</nuxt-link>      
           <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Корпоративный ВПН доступ</nuxt-link>          
