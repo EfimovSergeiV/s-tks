@@ -7,3 +7,20 @@
   opacity: 0;
   /* filter: blur(0.1rem); */
 }
+
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background-color: #374151;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #9ca3af;
+  border-radius: 0px;
+  box-shadow: inset 0px 0px 0px #9ca3af;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #9ca3af;
+}

@@ -4,8 +4,19 @@
     <div class="grid grid-cols-2 gap-4">
       
       <div class="content-center">
+
+        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 mb-4">
+          <p class="text-white uppercase font-semibold pb-1 border-b">Общая информация</p>
+          <div class="grid grid-cols-1 gap-2 py-4">
+            <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Помощь по удалённому доступу</nuxt-link>
+            <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Какая то информация</nuxt-link>
+            <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Ещё какая то информация</nuxt-link>          
+          </div>
+        </div>
+
+
         <div class="bg-gray-800 border border-gray-700 rounded-lg p-4">
-          <p class="text-white uppercase font-semibold pb-0.5 border-b">Внутренние сервисы</p>
+          <p class="text-white uppercase font-semibold pb-1 border-b">Внутренние сервисы</p>
 
           <div class="grid grid-cols-1 gap-2 py-4">
             <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Корпоративный мессенеджер</nuxt-link>
@@ -15,15 +26,6 @@
           </div>      
         </div>
 
-        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 mt-4">
-          <p class="text-white uppercase font-semibold pb-0.5 border-b">Общая информация</p>
-
-          <div class="grid grid-cols-1 gap-2 py-4">
-            <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Помощь по удалённому доступу</nuxt-link>
-            <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Какая то информация</nuxt-link>
-            <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Ещё какая то информация</nuxt-link>          
-          </div>
-        </div>
 
       </div>
 

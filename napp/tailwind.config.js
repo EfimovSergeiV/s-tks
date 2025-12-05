@@ -9,8 +9,19 @@ export default {
     "./app.vue",    
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        sm: '520px',
+        md: '820px',
+        lg: '1140px',
+        xl: '1440px',
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }
 
