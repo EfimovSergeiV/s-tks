@@ -82,12 +82,12 @@
     <div class="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-4">
       <div class="">
 
-        <div class="flex flex-wrap items-center justify-start gap-x-6 gap-y-2  py-2">
+        <div class="grid grid-cols-1 md:flex flex-wrap items-center justify-start gap-x-6 gap-y-2 py-2">
           <div class="">
             <div class="flex gap-4 items-center">
-              <label for="country" class="block text-sm/6 font-medium text-gray-100">Выбрать шаблон</label>
+              <label for="country" class="block text-sm/6 font-medium text-gray-100 min-w-32 w-">Выбрать шаблон</label>
               <div class="mt-2 grid grid-cols-1">
-                <select id="country" name="template" v-model="signatureVariant.template" autocomplete="country-name" class="appearance-none rounded-md bg-gray-700 py-1.5 pr-8 pl-3 text-base text-gray-100 outline-1 -outline-offset-1 outline-white *:bg-gray-500 focus:outline-1 focus:-outline-offset-1 focus:outline-gray-500 sm:text-sm/6">
+                <select id="country" name="template" v-model="signatureVariant.template" autocomplete="country-name" class="appearance-none rounded-md bg-gray-700 py-1.5 pr-8 pl-3 text-base text-gray-100 outline-1 -outline-offset-1 outline-white *:bg-gray-500 focus:outline-1 focus:-outline-offset-1 focus:outline-gray-500 sm:text-sm/6 min-w-36">
                   <option v-for="templ in context.templates" :value="templ" :key="templ.id">{{ templ.name }}</option>
                 </select>
               </div>
@@ -95,9 +95,9 @@
           </div>
           <div class="">
             <div class="flex gap-4 items-center">
-              <label for="country" class="block text-sm/6 font-medium text-gray-100">Заполнить из списка</label>
+              <label for="country" class="block text-sm/6 font-medium text-gray-100 min-w-32">Заполнить из базы</label>
               <div class="mt-2 grid grid-cols-1">
-                <select id="country" name="user" v-model="userData" autocomplete="country-name1" class="appearance-none rounded-md bg-gray-700 py-1.5 pr-8 pl-3 text-base text-gray-100 outline-1 -outline-offset-1 outline-white *:bg-gray-500 focus:outline-1 focus:-outline-offset-1 focus:outline-gray-500 sm:text-sm/6">
+                <select id="country" name="user" v-model="userData" autocomplete="country-name1" class="appearance-none rounded-md bg-gray-700 py-1.5 pr-8 pl-3 text-base text-gray-100 outline-1 -outline-offset-1 outline-white *:bg-gray-500 focus:outline-1 focus:-outline-offset-1 focus:outline-gray-500 sm:text-sm/6 min-w-36">
                   <option v-for="user in context.users" :value="user" :key="user.id">{{ user.name }}</option>
                 </select>
               </div>
@@ -164,7 +164,7 @@
 
     </div>
 
-    <div class="flex flex-wrap items-center justify-end gap-6 mt-4">
+    <div class="flex flex-wrap items-center justify-center gap-6 mt-4">
       <div class="">
         <div class="mt-1 mb-1 text-white">
           <p>Настройка подписи в браузере</p>

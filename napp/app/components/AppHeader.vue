@@ -1,8 +1,8 @@
 <template>
-  <div class="py-8 flex gap-4">
-    <nuxt-link :to="{ name: 'index' }">
-      <img src="/white-logo.png" class="h-10" />
-      <!-- <p class="text-gray-300">для сотрудников</p> -->
+  <div class="py-4 px-0.5 flex justify-end gap-4">
+    <nuxt-link :to="{ name: 'index' }" class="flex flex-col gap-0.5 items-end">
+      <img src="/white-logo.png" alt="tks-logo" class="h-10" />
+      <p class="text-gray-300 text-xs font-semibold">для сотрудников</p>
     </nuxt-link>
   </div>
 </template>
