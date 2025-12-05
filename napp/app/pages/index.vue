@@ -9,20 +9,20 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 mb-4 h-full">
-        <p class="text-white uppercase font-semibold pb-1 border-b text-right">Общая информация</p>
+        <p class="text-white uppercase font-semibold pb-1 border-b">Общая информация</p>
         <div class="grid grid-cols-1 gap-2 py-4">
-          <nuxt-link class="text-gray-200 italic hover:text-white hover:mr-1 text-right transition-all">Удалённый доступ Анидеск</nuxt-link>
-          <nuxt-link class="text-gray-200 italic hover:text-white hover:mr-1 text-right transition-all">Какая то информация</nuxt-link>
-          <nuxt-link class="text-gray-200 italic hover:text-white hover:mr-1 text-right transition-all">Ещё какая то информация</nuxt-link>          
+          <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Удалённый доступ Анидеск</nuxt-link>
+          <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Какая то информация</nuxt-link>
+          <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Ещё какая то информация</nuxt-link>          
         </div>
       </div>
       <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 h-full">
-        <p class="text-white uppercase font-semibold pb-1 border-b text-right">Внутренние сервисы</p>
+        <p class="text-white uppercase font-semibold pb-1 border-b">Внутренние сервисы</p>
         <div class="grid grid-cols-1 gap-2 py-4">
-          <nuxt-link class="text-gray-200 italic hover:text-white hover:mr-1 text-right transition-all">Корпоративный мессенеджер</nuxt-link>
-          <nuxt-link class="text-gray-200 italic hover:text-white hover:mr-1 text-right transition-all">Корпоративная почта</nuxt-link>
-          <nuxt-link :to="{ name: 'signature' }" class="text-gray-200 italic hover:text-white hover:mr-1 text-right transition-all">Генератор подписи для email</nuxt-link>      
-          <nuxt-link class="text-gray-200 italic hover:text-white hover:mr-1 text-right transition-all">Корпоративный ВПН доступ</nuxt-link>          
+          <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Корпоративный мессенеджер</nuxt-link>
+          <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Корпоративная почта</nuxt-link>
+          <nuxt-link :to="{ name: 'signature' }" class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Генератор подписи для email</nuxt-link>      
+          <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Корпоративный ВПН доступ</nuxt-link>          
         </div>      
       </div>
     </div>
