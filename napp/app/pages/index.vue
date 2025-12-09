@@ -1,5 +1,6 @@
 <script setup>
-
+  const config = useRuntimeConfig()
+  
 
 </script>
 
@@ -22,7 +23,7 @@
           <nuxt-link :to="{ name: 'messenger' }" class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Корпоративный мессенеджер</nuxt-link>
           <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Корпоративная почта</nuxt-link>
           <nuxt-link :to="{ name: 'signature' }" class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Генератор подписи для email</nuxt-link>      
-          <nuxt-link class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">Корпоративный ВПН доступ</nuxt-link>          
+          <nuxt-link v-if="false" :to="{ name: 'outline' }"class="text-gray-200 italic hover:text-white hover:ml-1 transition-all">{{ config.public.SRC.link }}</nuxt-link>          
         </div>      
       </div>
     </div>

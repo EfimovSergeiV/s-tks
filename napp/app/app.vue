@@ -11,9 +11,9 @@
       
       <NuxtLayout>
         <div class="min-h-screen flex flex-col justify-between">
-          <AppHeader class=" invisible" />
+          <AppHeader class=" in visible" />
           <NuxtPage class="flex-1" />
-          <AppFooter class=" invisible"/>
+          <AppFooter class=" in visible"/>
         </div>
       </NuxtLayout>
 

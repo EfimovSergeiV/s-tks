@@ -25,11 +25,13 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/image',
     '@nuxtjs/tailwindcss',
+    '@pinia/nuxt',
   ],
 
   runtimeConfig: {
     public: {
       baseURL: cfg.BASE_URL,
+      SRC: cfg.SRC,
     },
   },
 

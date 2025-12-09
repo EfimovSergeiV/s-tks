@@ -29,6 +29,6 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-admin.site.site_header = 'Администрирование приложения'
-admin.site.index_title = 'Интернет магазин Главный сварщик'
-admin.site.site_title = 'Администрирование приложения'
+admin.site.site_header = 'Внутренний портал Техносвар КС'
+admin.site.index_title = 'Внутренний портал Техносвар КС'
+admin.site.site_title = 'Внутренний портал Техносвар КС'
