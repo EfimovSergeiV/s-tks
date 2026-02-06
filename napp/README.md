@@ -1,75 +1,28 @@
-# Nuxt Minimal Starter
+### Использовал NPM
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Setup
+- Удалённый доступ RUDESK
+- - Как получить помощь удалённо
 
-Make sure to install dependencies:
+- Корпоративный мессенеджер MATTERMOST
+- - Как установить и подключиться
+- - Как настроить информацию о себе
+- - Как найти коллег и писать сообщения
+- - Непрочитанные сообщения 
+- - О командах и каналах
+- - Как пригласить сотрудника в команду
+- - Как пригласить сотрудника в канал
+- - Как создать общий канал
 
-```bash
-# npm
-npm install
 
-# pnpm
-pnpm install
+- Общий чат в Telegramm
+-
+-
+-
+-
+-
+-
+-
+-
+-
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

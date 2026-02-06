@@ -45,6 +45,22 @@
     }
   }
 
+  const saveAsHtml = () => {
+    if (!signatureCode.value) return
+
+    const blob = new Blob([signatureCode.value], { type: "text/html;charset=utf-8" })
+    const url = URL.createObjectURL(blob)
+
+    const a = document.createElement("a")
+    a.href = url
+    a.download = "signature.html"
+    document.body.appendChild(a)
+    a.click()
+
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  }
+
   const previewFrame = ref(null)
 
   watch(signatureCode, (html) => {
@@ -142,9 +158,10 @@
               </div>
 
               <div class="py-4 mt-4">
-                <div class="flex flex-wrap gap-4 items-center justify-center">
-                  <button @click="getSignatureCode()" class="rounded-sm bg-sky-500 px-4 py-2 text-base text-gray-50 font-semibold shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition-all">Сгенерировать подпись</button>
-                  <button @click="copyToClipboard()" class="rounded-sm bg-sky-500 px-4 py-2 text-base text-gray-50 font-semibold shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition-all">Скопировать в буфер обмена</button>      
+                <div class="flex flex-wrap gap-2 items-center justify-center">
+                  <button @click="getSignatureCode()" class="rounded-sm bg-sky-500 px-3 py-1.5 text-sm text-gray-50 font-semibold shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition-all">Сгенерировать подпись</button>
+                  <button @click="copyToClipboard()" class="rounded-sm bg-sky-500 px-3 py-1.5 text-sm text-gray-50 font-semibold shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition-all">Скопировать в буфер обмена</button>      
+                  <button @click="saveAsHtml()" class="rounded-sm bg-sky-500 px-3 py-1.5 text-sm text-gray-50 font-semibold shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition-all">Скачать файл</button>      
                 </div>
               </div>
 
