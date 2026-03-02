@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BannerImageModel, CatalogModel, SignatureGeneratorModel
+from .models import BannerImageModel, CatalogModel, SignatureGeneratorModel, AccessConfModel
 
 
 
@@ -25,4 +25,8 @@ class SignatureGeneratorAdmin(admin.ModelAdmin):
 
 
 
+
+
+
 admin.site.register(SignatureGeneratorModel, SignatureGeneratorAdmin)
+admin.site.register(AccessConfModel)

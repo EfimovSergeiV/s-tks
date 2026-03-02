@@ -45,3 +45,18 @@ class CatalogModel(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class AccessConfModel(models.Model):
+    """ Конфигурации доступа к сервисам """
+    
+    service_name = models.CharField(verbose_name="Название.ключ запроса", max_length=60)
+    service_secret = models.CharField(verbose_name="серетное слово", max_length=120)
+    credentials = models.JSONField(verbose_name="Реквизиты для входа")
+
+    class Meta:
+        verbose_name = "Конфигурацию доступа к сервису"
+        verbose_name_plural = "Конфигурации доступа к сервисам"
+
+    def __str__(self):
+        return self.service_name

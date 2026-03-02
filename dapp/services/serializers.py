@@ -27,6 +27,14 @@ class CatalogsSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+# class AccessConfSerializer(serializers.ModelSerializer):
+#     """ Cериализатор (__all__) """
+
+#     class Meta:
+#         model = AccessConfModel
+#         fields = "__all__"
+
+
 class SignatureSerializer(serializers.Serializer):
     """ Cериализатор подписи email (id, name, logo, banner_images, catalogs) """
 

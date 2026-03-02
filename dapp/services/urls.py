@@ -21,4 +21,5 @@ from .views import *
 
 urlpatterns = [
     path("signature/", SignatureGeneratorView.as_view(), name='signature_generator'),
+    path("credentials/", AccessConfView.as_view(), name='credentials'),
 ]

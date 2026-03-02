@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from django.template.loader import render_to_string
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .serializers import *
 from .models import *
-
+from random import randint, sample
 
 class SignatureGeneratorView(APIView):
     """ Генератор электронных подписей для сотрудников """
@@ -63,3 +63,26 @@ class SignatureGeneratorView(APIView):
         signature = render_to_string('email.html', context)
 
         return HttpResponse(signature)
+
+
+
+class AccessConfView(APIView):
+    """  """
+    
+    def post(self, request):
+        data = request.data
+
+        # service_name service_secret credentials
+        qs = AccessConfModel.objects.get(service_name=data.get("service_name"))
+
+
+        if qs and qs.service_secret == data.get("service_secret"):
+            return JsonResponse(qs.credentials)
+        
+        else:
+            key_string = "cNW0FykDvkwDN172hR8y7IbTxXiOSVYDdIMwMkm5cYw"
+            data = {
+                "ip": f"{randint(1,255)}.{randint(1,255)}.{randint(1,255)}.{randint(1,255)}",
+                "key": ''.join(sample(key_string, k=len(key_string)))
+            }
+            return JsonResponse(data)
