@@ -26,18 +26,18 @@
 
 
 <template>
-  <div class="">
+  <div class="grid grid-cols-1 gap-4">
 
-    <div class="grid grid-cols-1 gap-3 mt-6">
+    <div class="grid grid-cols-1 gap-6 mt-6 py-10 border border-gray-300/20 p-4 rounded-md">
       <div class="">
         <p class="text-gray-300 text-xl">RustDesk - это приложение для удаленного рабочего стола с открытым исходным кодом</p>
       </div>
 
 
       <div class="">
-        <div class="flex flex-wrap gap-4">
-          <a href="https://github.com/rustdesk/rustdesk/releases/download/1.4.5/rustdesk-1.4.5-x86_64.exe" class="text-gray-300 hover:text-white">Скачать для Windows</a>
-          <a href="https://github.com/rustdesk/rustdesk/releases/tag/1.4.5" class="text-gray-300 hover:text-white" target="blank">Все клиенты на Github</a>
+        <div class="flex flex-wrap justify-start gap-4">
+          <a href="https://github.com/rustdesk/rustdesk/releases/download/1.4.5/rustdesk-1.4.5-x86_64.exe" class="text-white font-semibold bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-md">Скачать для Windows</a>
+          <a href="https://github.com/rustdesk/rustdesk/releases/tag/1.4.5" class="text-white font-semibold bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-md" target="blank">Все клиенты на Github</a>
         </div>
       </div>
     </div>
@@ -45,7 +45,7 @@
 
 
 
-    <div class="py-6">
+    <div class="py-6 border border-gray-300/20 p-4 rounded-md">
       <p class="text-white text-xl">Подключение к серверу:</p>
 
       <div class="grid grid-cols-3 gap-4 py-4">
@@ -94,7 +94,7 @@
     </div>
 
 
-    <div class="py-6">
+    <div class="py-6 border border-gray-300/20 p-4 rounded-md">
       <p class="text-white text-xl">Безопасность:</p>
 
       <div class="grid grid-cols-3 gap-4 py-4">
@@ -102,7 +102,7 @@
         <div class="grid grid-cols-1 gap-2">
           <div class=""><img src="/desk/4.png" /></div>
           <div class="">
-            <p class="text-gray-300 text-sm">
+            <p class="text-red-500 text-sm">
               Для секьюрности лучше отключить одноразовый пароль и задать постоянный (желательно что то посложнее qwerty1234)
             </p>
             <p class="text-white mt-0.5">
