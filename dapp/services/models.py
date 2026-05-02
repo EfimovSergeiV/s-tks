@@ -20,15 +20,17 @@ class BannerImageModel(models.Model):
     """ Изображение баннера в подписи email """
 
     signature = models.ForeignKey(SignatureGeneratorModel, on_delete=models.CASCADE, related_name="banner_images")
+    order = models.PositiveIntegerField(verbose_name="Порядок отображения баннера", default=10)
     link = models.URLField(max_length=500, verbose_name="Ссылка на сайт")    
     image = models.ImageField(upload_to='signatures/banners/', verbose_name="Изображение баннера 600x100(px)")
 
     class Meta:
         verbose_name = "Изображение баннера внизу подписи"
         verbose_name_plural = "Изображения баннеров внизу подписи"
+        ordering = ['order']
 
     def __str__(self):
-        return f"Banner Image {self.link}"
+        return f"Баннер {self.order}"
 
 
 class CatalogModel(models.Model):
