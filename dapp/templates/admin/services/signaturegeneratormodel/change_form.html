@@ -1,0 +1,56 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_urls %}
+
+{% block extrahead %}
+{{ block.super }}
+<style>
+  .object-tools .duplicate-object-tool {
+    margin-right: 8px;
+  }
+
+  .object-tools .duplicate-object-tool form {
+    display: inline;
+  }
+
+  .object-tools .duplicate-object-tool .duplicate-btn {
+    border: none;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+    box-shadow: 0 8px 20px rgba(20, 184, 166, 0.28);
+    transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease;
+  }
+
+  .object-tools .duplicate-object-tool .duplicate-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(20, 184, 166, 0.36);
+    filter: saturate(1.08);
+  }
+
+  .object-tools .duplicate-object-tool .duplicate-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 16px rgba(20, 184, 166, 0.28);
+  }
+
+  .object-tools .duplicate-object-tool .duplicate-btn:focus-visible {
+    outline: 2px solid #14b8a6;
+    outline-offset: 2px;
+  }
+</style>
+{% endblock %}
+
+{% block object-tools-items %}
+{% if change and original %}
+<li class="duplicate-object-tool">
+  <form method="post" action="{% url 'admin:services_signaturegeneratormodel_duplicate' original.pk|admin_urlquote %}">
+    {% csrf_token %}
+    <button type="submit" class="duplicate-btn">{% trans "Создать точную копию" %}</button>
+  </form>
+</li>
+{% endif %}
+{{ block.super }}
+{% endblock %}
